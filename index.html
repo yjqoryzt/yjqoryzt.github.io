@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPet - Learn Sentences with Fun</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#4a90e2">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>WordPet</h1>
+        </header>
+        
+        <main id="main-content">
+            <!-- Game content will be dynamically inserted here -->
+            <div id="home-screen" class="screen active">
+                <h2>Welcome to WordPet!</h2>
+                <div id="pet-display">
+                    <!-- Pet will be displayed here -->
+                </div>
+                <div id="player-stats">
+                    <!-- Player stats will be displayed here -->
+                </div>
+                <div id="home-buttons">
+                    <button id="start-practice-btn" class="btn-primary">Start Practice</button>
+                    <button id="review-btn" class="btn-secondary">Review Mistakes</button>
+                    <button id="pet-care-btn" class="btn-secondary">Pet Care</button>
+                    <button id="settings-btn" class="btn-secondary">Settings</button>
+                </div>
+            </div>
+            
+            <div id="game-screen" class="screen">
+                <div id="player-xp-display">
+                    <!-- Core player experience data will be displayed here -->
+                </div>
+                <div id="feedback-container">
+                    <!-- Feedback messages will appear here -->
+                </div>
+                <div id="sentence-puzzle-container">
+                    <!-- Sentence puzzle will be displayed here -->
+                </div>
+                <div id="game-controls">
+                    <!-- Game control buttons will be displayed here -->
+                </div>
+            </div>
+            
+            <div id="settings-screen" class="screen">
+                <h2>Settings</h2>
+                <div class="settings-panel">
+                    <div class="setting-item">
+                        <label class="setting-label" for="enable-tts">Enable Text-to-Speech</label>
+                        <input type="checkbox" id="enable-tts" class="setting-control">
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label class="setting-label" for="tts-volume">TTS Volume</label>
+                        <input type="range" id="tts-volume" class="setting-control" min="0" max="1" step="0.1" value="0.8">
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label class="setting-label" for="tts-rate">TTS Speed</label>
+                        <input type="range" id="tts-rate" class="setting-control" min="0.1" max="2" step="0.1" value="0.6">
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label class="setting-label" for="tts-pitch">TTS Pitch</label>
+                        <input type="range" id="tts-pitch" class="setting-control" min="0" max="2" step="0.1" value="1.0">
+                    </div>
+                    
+                    <div class="setting-item">
+                        <button id="tts-test-btn" class="btn-secondary">Test TTS</button>
+                        <button id="save-settings-btn" class="btn-primary">Save Settings</button>
+                        <button id="back-to-home-btn" class="btn-secondary">Back to Home</button>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <div id="tts-status-indicator" class="status-indicator">
+                            TTS Status: <span id="tts-status-text">Checking...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="utils.js"></script>
+    <script src="data.js"></script>
+    <script src="pet.js"></script>
+    <script src="game.js"></script>
+    <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function() { navigator.serviceWorker.register("./sw.js"); });
+    }
+    </script>
+</body>
+</html>
